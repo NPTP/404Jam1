@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &191286610
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,11 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2017f1c522d7dce48b0b4dd496e3364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeSize: 0.05
-  numCubes: 6
+  particle: {fileID: 2452707255523756369, guid: 9dcb4f81f8650d24cb1b048e8d3517d1,
+    type: 3}
+  particleSize: 0.1
+  numparticles: 5
   explosionForce: 15
-  explosionRadius: 4
-  explosionUpward: 0.4
+  explosionRadius: 2
+  explosionUpward: 0.08
 --- !u!135 &191286612
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -206,7 +208,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98a3e4630eb0a3e45b501a30f6beab4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -269,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &270239222
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -298,11 +300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2017f1c522d7dce48b0b4dd496e3364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeSize: 0.05
-  numCubes: 6
+  particle: {fileID: 2452707255523756369, guid: 9dcb4f81f8650d24cb1b048e8d3517d1,
+    type: 3}
+  particleSize: 0.1
+  numparticles: 5
   explosionForce: 15
-  explosionRadius: 4
-  explosionUpward: 0.4
+  explosionRadius: 2
+  explosionUpward: 0.08
 --- !u!65 &270239224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -334,7 +338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9d3463f8f921f364ba918f5663cbeefd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -603,11 +607,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2017f1c522d7dce48b0b4dd496e3364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeSize: 0.05
-  numCubes: 6
-  explosionForce: 15
-  explosionRadius: 4
-  explosionUpward: 0.4
+  particle: {fileID: 2452707255523756369, guid: 9dcb4f81f8650d24cb1b048e8d3517d1,
+    type: 3}
+  particleSize: 0.1
+  numparticles: 44
+  explosionForce: 500
+  explosionRadius: 9.94
+  explosionUpward: 0.44
 --- !u!135 &1007382376
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -639,7 +645,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9d3463f8f921f364ba918f5663cbeefd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -676,7 +682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007382373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.45, y: 2.53, z: -0.71}
+  m_LocalPosition: {x: -0.07, y: 2.53, z: -1.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -702,7 +708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1571488055
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -731,11 +737,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2017f1c522d7dce48b0b4dd496e3364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeSize: 0.05
-  numCubes: 6
+  particle: {fileID: 2452707255523756369, guid: 9dcb4f81f8650d24cb1b048e8d3517d1,
+    type: 3}
+  particleSize: 0.1
+  numparticles: 5
   explosionForce: 15
-  explosionRadius: 4
-  explosionUpward: 0.4
+  explosionRadius: 2
+  explosionUpward: 0.08
 --- !u!65 &1571488057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -767,7 +775,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98a3e4630eb0a3e45b501a30f6beab4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

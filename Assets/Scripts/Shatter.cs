@@ -16,6 +16,8 @@ public class Shatter : MonoBehaviour
     public float explosionRadius = 4f;
     public float explosionUpward = 0.4f;
 
+    private bool isExploded = false;
+
     // Use this for initialization
     void Start()
     {
@@ -26,14 +28,18 @@ public class Shatter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (isExploded)
+        {
+            explode();
+            isExploded = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Floor")
         {
-            explode();
+            isExploded = true;
         }
     }
 
@@ -44,7 +50,7 @@ public class Shatter : MonoBehaviour
 
         for (int p = 0; p < numparticles; p++)
         {
-            Instantiate(particle, transform.position, Quaternion.identity);
+            Instantiate(particle, new Vector3(transform.position.x + Random.Range(-2f, 2f), transform.position.y + Random.Range(0f, 2f), transform.position.z + Random.Range(-2f, 2f)), Quaternion.identity);
         }
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -55,7 +61,7 @@ public class Shatter : MonoBehaviour
             if (rb != null)
             {
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, explosionUpward);
-                rb.angularVelocity = new Vector3(rnd.Next(0, 15), rnd.Next(0, 15), rnd.Next(0, 15));
+                rb.angularVelocity = new Vector3(rnd.Next(-30, 30), rnd.Next(-30, 30), rnd.Next(-30, 30));
             }
         }
     }
