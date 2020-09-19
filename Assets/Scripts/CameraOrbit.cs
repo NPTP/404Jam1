@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraOrbit : MonoBehaviour
 {
-    private Transform xFormCamera;
-    private Transform xFormParent;
+    public GameObject character;
+    public PlayerController playerController;
 
     private Vector3 localRotation;
     private float cameraDistance = 10f;
@@ -20,8 +20,7 @@ public class CameraOrbit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.xFormCamera = this.transform;
-        this.xFormParent = this.transform.parent;
+        playerController = character.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -60,13 +59,17 @@ public class CameraOrbit : MonoBehaviour
     // Called after Update()
     private void LateUpdate()
     {
+        Quaternion rotationDelta = Quaternion.Euler(this.character.transform.rotation.eulerAngles - this.playerController.pastRotation.eulerAngles);
+
+        Debug.Log(rotationDelta);
+
         Quaternion qt = Quaternion.Euler(localRotation.y, localRotation.x, 0);
 
-        this.xFormParent.rotation = Quaternion.Lerp(this.xFormParent.rotation, qt, Time.deltaTime * orbitDampening);
+        this.character.transform.rotation = Quaternion.Lerp(this.character.transform.rotation, qt, Time.deltaTime * orbitDampening);
 
-        if (this.xFormCamera.localPosition.z != this.cameraDistance * -1f)
+        if (this.transform.localPosition.z != this.cameraDistance * -1f)
         {
-            this.xFormCamera.localPosition = new Vector3(0f, 0f, Mathf.Lerp(this.xFormCamera.localPosition.z, this.cameraDistance * -1f, Time.deltaTime * scrollDampening));
+            this.transform.localPosition = new Vector3(0f, 0f, Mathf.Lerp(this.transform.localPosition.z, this.cameraDistance * -1f, Time.deltaTime * scrollDampening));
         }
     }
 }
