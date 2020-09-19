@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movementSpeed = 5;
+    public float movementSpeed = 0.001f;
     public float jumpAdjust = 1f;
     public float jumpHeight = 100f;
     public float jumpTimerAdjust = 2f;
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private float distToGround;
     private Vector3 jumpMovement;
 
+    public Quaternion pastRotation;
     
     private Rigidbody rb;
     private Collider c;
@@ -37,7 +38,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
         bool isGrounded = IsGrounded();
         float jumpMove = 0;
         if (Input.GetKey(KeyCode.Space) && isGrounded)
@@ -68,14 +68,17 @@ public class PlayerController : MonoBehaviour
             jumpChargeTimer = 0;
             jumpMovement = new Vector3(0f, 0f, 0f);
         }
-    }
 
-    void FixedUpdate()
-    {
+        this.pastRotation = this.transform.rotation;
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal * movementSpeed, 0f, moveVertical * movementSpeed);
-        rb.AddForce(movement + jumpMovement) ;
+        rb.transform.position = rb.transform.position + new Vector3(moveHorizontal * movementSpeed, 0, moveVertical * movementSpeed);
+    }
+
+    private void FixedUpdate()
+    {
+        rb.AddForce(jumpMovement);
     }
 }
