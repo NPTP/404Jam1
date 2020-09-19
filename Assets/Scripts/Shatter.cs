@@ -35,9 +35,9 @@ public class Shatter : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name == "Floor")
+        if (other.gameObject.name == "Player")
         {
             isExploded = true;
         }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraOrbit : MonoBehaviour
 {
     public GameObject character;
-    public PlayerController playerController;
 
     private Vector3 localRotation;
     private float cameraDistance = 10f;
@@ -20,7 +19,6 @@ public class CameraOrbit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = character.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -59,10 +57,6 @@ public class CameraOrbit : MonoBehaviour
     // Called after Update()
     private void LateUpdate()
     {
-        Quaternion rotationDelta = Quaternion.Euler(this.character.transform.rotation.eulerAngles - this.playerController.pastRotation.eulerAngles);
-
-        Debug.Log(rotationDelta);
-
         Quaternion qt = Quaternion.Euler(localRotation.y, localRotation.x, 0);
 
         this.character.transform.rotation = Quaternion.Lerp(this.character.transform.rotation, qt, Time.deltaTime * orbitDampening);

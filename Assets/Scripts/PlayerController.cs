@@ -8,16 +8,14 @@ public class PlayerController : MonoBehaviour
     public float jumpAdjust = 1f;
     public float jumpHeight = 100f;
     public float jumpTimerAdjust = 2f;
-
+    public AudioClip ChargeUpSound;
     private float movementX;
     private float movementY;
     private float jumpMove;
     private float jumpChargeTimer;
     private float distToGround;
     private Vector3 jumpMovement;
-
-    public Quaternion pastRotation;
-    
+    private AudioSource audioSource;
     private Rigidbody rb;
     private Collider c;
 
@@ -28,6 +26,7 @@ public class PlayerController : MonoBehaviour
         c = GetComponent<Collider>();
         distToGround = c.bounds.extents.y;
         jumpChargeTimer = 0f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     bool IsGrounded()
@@ -43,10 +42,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             jumpChargeTimer += Time.deltaTime;
+            audioSource.enabled = true;
+            if (!audioSource.isPlaying)
+            {
+
+                audioSource.clip = ChargeUpSound;
+                audioSource.Play();
+            }
+            jumpChargeTimer += Time.deltaTime;
         }
 
         if (Input.GetKeyUp(KeyCode.Space) && isGrounded)
         {
+            GetComponent<AudioSource>().Stop();
+
             if (jumpChargeTimer > 0.5f && jumpChargeTimer < 2f)
             {
                 jumpMove = jumpHeight * jumpChargeTimer * jumpTimerAdjust;
@@ -68,8 +77,6 @@ public class PlayerController : MonoBehaviour
             jumpChargeTimer = 0;
             jumpMovement = new Vector3(0f, 0f, 0f);
         }
-
-        this.pastRotation = this.transform.rotation;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
