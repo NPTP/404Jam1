@@ -5,8 +5,12 @@ using UnityEngine;
 public class BounceSoundTest : MonoBehaviour
 {
 
-    void Start()
+    void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SoundManager.soundManager.PlaySmashSound();
+        }
     }
 
     void OnCollisionEnter()  //Plays Sound Whenever collision detected
