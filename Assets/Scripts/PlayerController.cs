@@ -4,47 +4,78 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movementSpeed = 1;
-    public float rotationSpeed = 0;
+    public float movementSpeed = 5;
+    public float jumpAdjust = 1f;
+    public float jumpHeight = 100f;
+    public float jumpTimerAdjust = 2f;
 
     private float movementX;
     private float movementY;
-    private bool jump;
+    private float jumpMove;
+    private float jumpChargeTimer;
+    private float distToGround;
+    private Vector3 jumpMovement;
 
     
     private Rigidbody rb;
-
-    public float jumpHeight = 1.5f;
-
+    private Collider c;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        jump = false;
+        c = GetComponent<Collider>();
+        distToGround = c.bounds.extents.y;
+        jumpChargeTimer = 0f;
+    }
+
+    bool IsGrounded()
+    {
+        distToGround = c.bounds.extents.y;
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
     void Update()
     {
-        if (rb.velocity.y == 0)
-        {
-            jump = false;
-        }
         
+        bool isGrounded = IsGrounded();
+        float jumpMove = 0;
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        {
+            jumpChargeTimer += Time.deltaTime;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && isGrounded)
+        {
+            if (jumpChargeTimer > 0.5f && jumpChargeTimer < 2f)
+            {
+                jumpMove = jumpHeight * jumpChargeTimer * jumpTimerAdjust;
+            } 
+            else if (jumpChargeTimer >= 2)
+            {
+                jumpMove = jumpHeight * 4 * jumpTimerAdjust;
+            } 
+            else
+            {
+                jumpMove = jumpHeight;
+                jumpChargeTimer = 0;
+            }
+            jumpMovement = new Vector3(0f, jumpMove, 0f);
+        } 
+
+        if (!isGrounded)
+        {
+            jumpChargeTimer = 0;
+            jumpMovement = new Vector3(0f, 0f, 0f);
+        }
     }
 
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        float jumpMovement = 0f;
-        if (Input.GetKeyDown(KeyCode.Space) && !jump)
-        {
-            jumpMovement = jumpHeight;
-            jump = true;
-        }
-        Vector3 movement = new Vector3(moveHorizontal, jumpMovement, moveVertical);
-        rb.AddForce(movement * movementSpeed);
-    }
 
+        Vector3 movement = new Vector3(moveHorizontal * movementSpeed, 0f, moveVertical * movementSpeed);
+        rb.AddForce(movement + jumpMovement) ;
+    }
 }
