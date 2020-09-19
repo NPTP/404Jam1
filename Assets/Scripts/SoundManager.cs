@@ -10,10 +10,11 @@ public class SoundManager : MonoBehaviour
     private AudioClip[] smashSounds;
     private int roundRobinIndex = 0;
 
+    public AudioSource sfxSource;
+
     void Start()
     {
         soundManager = this;
-        audioSource = GetComponent<AudioSource>();
         bounceSounds = Resources.LoadAll<AudioClip>("bounce");
         smashSounds = Resources.LoadAll<AudioClip>("smash");
     }
@@ -22,7 +23,7 @@ public class SoundManager : MonoBehaviour
     public void PlayBounceSound()
     {
         int randomIndex = Random.Range(0, bounceSounds.Length);
-        audioSource.PlayOneShot(bounceSounds[randomIndex]);
+        sfxSource.PlayOneShot(bounceSounds[randomIndex]);
     }
 
     // Plays round robin smash sound
@@ -32,7 +33,7 @@ public class SoundManager : MonoBehaviour
         {
             roundRobinIndex = 0;
         }
-        audioSource.PlayOneShot(smashSounds[roundRobinIndex]);
+        sfxSource.PlayOneShot(smashSounds[roundRobinIndex]);
         roundRobinIndex++;
     }
 }
