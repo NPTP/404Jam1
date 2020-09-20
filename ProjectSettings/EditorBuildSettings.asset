@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo.unity
     guid: 740d88890779de840a29d4fdfae94517
-  - enabled: 1
-    path: Assets/Scenes/RandomSoundTesting.unity
-    guid: 01cc923bb7d7fe84c9da7461b8fcbd8b
   m_configObjects: {}
