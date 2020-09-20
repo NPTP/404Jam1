@@ -18,11 +18,15 @@ public class Shatter : MonoBehaviour
 
     private bool isExploded = false;
 
+    public AudioSource audioSource;
+    private AudioClip[] smashSounds;
+
     // Use this for initialization
     void Start()
     {
         particlesPivotDistance = particleSize * numparticles / 2;
         particlesPivot = new Vector3(particlesPivotDistance, particlesPivotDistance, particlesPivotDistance);
+
     }
 
     // Update is called once per frame
@@ -31,6 +35,9 @@ public class Shatter : MonoBehaviour
         if (isExploded)
         {
             explode();
+            // smashSounds = Resources.LoadAll<AudioClip>("smash");
+            // int randomIndex = Random.Range(0, smashSounds.Length);
+            // audioSource.PlayOneShot(smashSounds[randomIndex]);
             isExploded = false;
         }
     }
@@ -45,6 +52,7 @@ public class Shatter : MonoBehaviour
 
     public void explode()
     {
+
         gameObject.SetActive(false);
         System.Random rnd = new System.Random();
 
