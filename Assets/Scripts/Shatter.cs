@@ -18,8 +18,8 @@ public class Shatter : MonoBehaviour
 
     private bool isExploded = false;
 
-    public AudioSource audioSource;
-    private AudioClip[] smashSounds;
+    // public AudioSource audioSource;
+    // private AudioClip[] smashSounds;
 
     // Use this for initialization
     void Start()

@@ -468,6 +468,7 @@ MonoBehaviour:
   jumpHeight: 100
   jumpTimerAdjust: 2
   ChargeUpSound: {fileID: 8300000, guid: 423b4ef7ba2d97846bda787f7b9d8719, type: 3}
+  armadilloCam: {fileID: 1674637065}
 --- !u!54 &538692377
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -927,7 +928,6 @@ MonoBehaviour:
   explosionForce: 50
   explosionRadius: 23.1
   explosionUpward: 0.4
-  audioSource: {fileID: 0}
 --- !u!1 &809240509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,7 +1059,6 @@ MonoBehaviour:
   explosionForce: 50
   explosionRadius: 23.5
   explosionUpward: 0.4
-  audioSource: {fileID: 0}
 --- !u!1001 &883116765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1169,7 +1168,6 @@ MonoBehaviour:
   explosionForce: 72.65
   explosionRadius: 61.78
   explosionUpward: 0.4
-  audioSource: {fileID: 0}
 --- !u!1 &985984891 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3097189248013957770, guid: 310f11266660bf046a7c2efbef92f03a,
@@ -1195,7 +1193,6 @@ MonoBehaviour:
   explosionForce: 52.4
   explosionRadius: 21.79
   explosionUpward: 0.4
-  audioSource: {fileID: 0}
 --- !u!1 &1011778381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,7 +1813,6 @@ MonoBehaviour:
   explosionForce: 68.6
   explosionRadius: 4.99
   explosionUpward: 0.9
-  audioSource: {fileID: 0}
 --- !u!1001 &1946049304
 PrefabInstance:
   m_ObjectHideFlags: 0
