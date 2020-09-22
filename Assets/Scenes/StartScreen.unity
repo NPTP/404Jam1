@@ -516,8 +516,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -271.1, y: 157.8}
-  m_SizeDelta: {x: 238.487, y: 42.63011}
+  m_AnchoredPosition: {x: -16.81, y: 157.8}
+  m_SizeDelta: {x: 747.0623, y: 42.63011}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067206129
 MonoBehaviour:
@@ -548,10 +548,10 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Code: Denny Wiseman, Josh Bragg, Nick Perrin
+  m_Text: 'Code: Nick Perrin, Denny Wiseman, Josh Bragg
 
     Visuals: Min Fam
 
@@ -804,14 +804,14 @@ RectTransform:
   m_GameObject: {fileID: 1340248028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.6819016, z: 1}
   m_Children: []
   m_Father: {fileID: 1276777774}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -0.0017853}
+  m_AnchoredPosition: {x: -1, y: 0.9}
   m_SizeDelta: {x: 801.99994, y: 374.3838}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1340248030
