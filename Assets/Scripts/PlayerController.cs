@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 0.001f;
+    public float physicsSpeed = 5000f;
     public float jumpAdjust = 1f;
     public float jumpHeight = 100f;
     public float jumpTimerAdjust = 2f;
@@ -19,6 +20,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Collider c;
     public Camera armadilloCam;
+    private float camX;
+    private float camZ;
+    private AudioClip[] bounceSounds;
+    private AudioClip[] smashSounds;
+    private int roundRobinIndex = 0;
+    private bool movingForward = false;
+    private bool movingBackward = false;
+    private bool movingLeft = false;
+    private bool movingRight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +38,8 @@ public class PlayerController : MonoBehaviour
         distToGround = c.bounds.extents.y;
         jumpChargeTimer = 0f;
         audioSource = GetComponent<AudioSource>();
+        bounceSounds = Resources.LoadAll<AudioClip>("bounce");
+        smashSounds = Resources.LoadAll<AudioClip>("smash");
     }
 
     bool IsGrounded()
@@ -84,32 +96,95 @@ public class PlayerController : MonoBehaviour
 
         // rb.transform.position = rb.transform.position + new Vector3(moveHorizontal * movementSpeed, 0, moveVertical * movementSpeed);
 
-        float x = armadilloCam.transform.forward.x;
-        float z = armadilloCam.transform.forward.z;
-        float speed = 5000f * Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            rb.AddForce(speed * x, 0, speed * z);
+            movingForward = true;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            rb.AddForce(-speed * x, 0, -speed * z);
+            movingBackward = true;
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            rb.AddForce(-speed * z, 0, speed * x);
+            movingLeft = true;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            rb.AddForce(speed * z, 0, -speed * x);
+            movingRight = true;
         }
 
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            movingForward = false;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            movingBackward = false;
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            movingLeft = false;
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            movingRight = false;
+        }
     }
 
     private void FixedUpdate()
     {
         rb.AddForce(jumpMovement);
+        camX = armadilloCam.transform.forward.x;
+        camZ = armadilloCam.transform.forward.z;
+
+        if (movingForward)
+        {
+            rb.AddForce(physicsSpeed * Time.deltaTime * camX, 0, physicsSpeed * Time.deltaTime * camZ);
+        }
+        else if (movingBackward)
+        {
+            rb.AddForce(-physicsSpeed * Time.deltaTime * camX, 0, -physicsSpeed * Time.deltaTime * camZ);
+        }
+
+        if (movingLeft)
+        {
+            rb.AddForce(-physicsSpeed * Time.deltaTime * camZ, 0, physicsSpeed * Time.deltaTime * camX);
+        }
+        else if (movingRight)
+        {
+            rb.AddForce(physicsSpeed * Time.deltaTime * camZ, 0, -physicsSpeed * Time.deltaTime * camX);
+        }
     }
+
+    // Plays random bounce sound
+    public void PlayBounceSound()
+    {
+        audioSource.PlayOneShot(bounceSounds[Random.Range(0, bounceSounds.Length)]);
+    }
+
+    // Plays round robin smash sound
+    public void PlaySmashSound()
+    {
+        if (roundRobinIndex == smashSounds.Length)
+        {
+            roundRobinIndex = 0;
+        }
+        audioSource.PlayOneShot(smashSounds[roundRobinIndex]);
+        roundRobinIndex++;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Bouncy")
+        {
+            PlayBounceSound();
+        }
+        else if (other.gameObject.tag == "Destructible")
+        {
+            PlaySmashSound();
+        }
+    }
+
 }

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// ---------------------------
+// DEPRECATED
+// ---------------------------
+
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager soundManager;

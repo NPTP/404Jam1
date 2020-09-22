@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2452707255523756369
+--- !u!1 &6452572755722032045
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7949940086067689401}
-  - component: {fileID: 6049495158601751077}
-  - component: {fileID: 9126403215318401292}
-  - component: {fileID: 3310171296665442024}
-  - component: {fileID: -8332217211080451674}
-  - component: {fileID: -2970841609672058234}
+  - component: {fileID: 6452572755722032048}
+  - component: {fileID: 6452572755722032049}
+  - component: {fileID: 6452572755722032046}
+  - component: {fileID: 6452572755722032047}
+  - component: {fileID: 6452572755722032044}
   m_Layer: 0
-  m_Name: Particle
-  m_TagString: Untagged
+  m_Name: Plate Destructible
+  m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7949940086067689401
+--- !u!4 &6452572755722032048
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452707255523756369}
+  m_GameObject: {fileID: 6452572755722032045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3620155, y: 2.08, z: -7.04}
-  m_LocalScale: {x: 0.2, y: 0.01, z: 0.2}
+  m_LocalPosition: {x: 20.338, y: 3.06, z: -2.381}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6049495158601751077
+--- !u!33 &6452572755722032049
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452707255523756369}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9126403215318401292
+  m_GameObject: {fileID: 6452572755722032045}
+  m_Mesh: {fileID: 6099800089077584851, guid: da68889b656c2c94d84760f4cfcd97f8, type: 3}
+--- !u!23 &6452572755722032046
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452707255523756369}
+  m_GameObject: {fileID: 6452572755722032045}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -82,44 +81,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3310171296665442024
+--- !u!65 &6452572755722032047
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452707255523756369}
+  m_GameObject: {fileID: 6452572755722032045}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-8332217211080451674
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452707255523756369}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &-2970841609672058234
+  m_Size: {x: 0.073540576, y: 0.0043696007, z: 0.073540576}
+  m_Center: {x: 0, y: 0.0016725878, z: 0}
+--- !u!114 &6452572755722032044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2452707255523756369}
+  m_GameObject: {fileID: 6452572755722032045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5e1b8f69cbcde846bacdf285446a1cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2017f1c522d7dce48b0b4dd496e3364e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 2452707255523756369, guid: 9dcb4f81f8650d24cb1b048e8d3517d1,
+    type: 3}
+  particleSize: 0.48
+  numparticles: 201
+  explosionForce: 68.6
+  explosionRadius: 4.99
+  explosionUpward: 0.9
+  scoreUIObject: {fileID: 0}
+  scoreUIScript: {fileID: 0}
