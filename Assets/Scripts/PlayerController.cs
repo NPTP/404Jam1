@@ -25,10 +25,13 @@ public class PlayerController : MonoBehaviour
     private AudioClip[] bounceSounds;
     private AudioClip[] smashSounds;
     private int roundRobinIndex = 0;
+    private bool moving = false;
     private bool movingForward = false;
     private bool movingBackward = false;
     private bool movingLeft = false;
     private bool movingRight = false;
+    public GameObject armaModel;
+    public GameObject ballModel;
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 jumpMove = jumpHeight;
                 jumpChargeTimer = 0;
             }
-            jumpMovement = new Vector3(0f, 1000f * Time.deltaTime * jumpMove, 0f);
+            jumpMovement = new Vector3(0f, 600f * Time.deltaTime * jumpMove, 0f);
         }
 
         if (!isGrounded)
@@ -99,36 +102,44 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
+            moving = true;
             movingForward = true;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
+            moving = true;
             movingBackward = true;
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
+            moving = true;
             movingLeft = true;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
+            moving = true;
             movingRight = true;
         }
 
         if (Input.GetKeyUp(KeyCode.W))
         {
+            moving = false;
             movingForward = false;
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
+            moving = false;
             movingBackward = false;
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
+            moving = false;
             movingLeft = false;
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
+            moving = false;
             movingRight = false;
         }
     }
@@ -138,6 +149,17 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(jumpMovement);
         camX = armadilloCam.transform.forward.x;
         camZ = armadilloCam.transform.forward.z;
+
+        if (moving)
+        {
+            armaModel.SetActive(false);
+            ballModel.SetActive(true);
+        }
+        else
+        {
+            armaModel.SetActive(true);
+            ballModel.SetActive(false);
+        }
 
         if (movingForward)
         {

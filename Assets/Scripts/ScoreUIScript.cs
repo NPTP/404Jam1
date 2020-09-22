@@ -6,7 +6,7 @@ public class ScoreUIScript : MonoBehaviour
 {
     public int numDestroyed = 0;
     public bool hitSomething = false;
-    public int destroyGoal = 10;
+    public int destroyGoal = 25;
     public Text scoreNumber;
 
     void Update()
@@ -17,7 +17,7 @@ public class ScoreUIScript : MonoBehaviour
             hitSomething = false;
         }
 
-        scoreNumber.text = (numDestroyed * 100).ToString("0");
+        scoreNumber.text = (numDestroyed * 100).ToString("0") + " / " + (destroyGoal * 100).ToString("0");
 
         if (numDestroyed == destroyGoal)
         {
