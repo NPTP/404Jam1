@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 jumpMove = jumpHeight;
                 jumpChargeTimer = 0;
             }
-            jumpMovement = new Vector3(0f, jumpMove, 0f);
+            jumpMovement = new Vector3(0f, 1000f * Time.deltaTime * jumpMove, 0f);
         }
 
         if (!isGrounded)
